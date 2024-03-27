@@ -3,7 +3,6 @@
   "type": "module",
   "license": "MIT",
   "version": "0.3.1",
-  "packageManager": "pnpm@8.14.1",
   "description": "",
   "homepage": "https://github.com/KeJunMao/vite-plugin-conditional-compile",
   "repository": {
