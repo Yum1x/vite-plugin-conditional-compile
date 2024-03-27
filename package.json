@@ -66,5 +66,6 @@
   "dependencies": {
     "@ampproject/remapping": "^2.2.1",
     "unplugin-preprocessor-directives": "^1.0.1"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
