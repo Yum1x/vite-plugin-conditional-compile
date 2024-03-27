@@ -10,60 +10,60 @@ const render = (s: string) => {
 
 render("no conditional");
 
-// #v-ifdef DEV
+/// #if DEV
 render("Conditional: DEV");
-// #v-endif
+/// #endif
 
-// #v-ifdef PROD
+/// #if PROD
 render("Conditional: PROD");
-// #v-endif
+/// #endif
 
-// #v-ifdef !DEV
+/// #if !DEV
 render("Conditional: !DEV");
-// #v-endif
+/// #endif
 
-// #v-ifdef !PROD
+/// #if !PROD
 render("Conditional: !PROD");
-// #v-endif
+/// #endif
 
-// #v-ifdef DEV
+/// #if DEV
 render("Conditional: n DEV");
-// #v-endif
+/// #endif
 
-// #v-ifdef PROD
+/// #if PROD
 render("Conditional: n PROD");
-// #v-endif
+/// #endif
 
-// #v-ifdef (DEV||PROD)
+/// #if (DEV||PROD)
 render("Conditional: DEV||PROD");
-// #v-endif
+/// #endif
 
-// #v-ifdef (!DEV||PROD)
+/// #if (!DEV||PROD)
 render("Conditional: !DEV||PROD");
-// #v-endif
+/// #endif
 
-// #v-ifdef DEV=true
+/// #if DEV=true
 render("Conditional: DEV=true");
-// #v-endif
+/// #endif
 
-// #v-ifdef PROD!=true
+/// #if PROD!=true
 render("Conditional: PROD!=true");
-// #v-endif
+/// #endif
 
-// #v-ifdef !DEV=false
+/// #if !DEV=false
 render("Conditional: !DEV=false");
-// #v-endif
+/// #endif
 
-// #v-ifdef !DEV!=true
+/// #if !DEV!=true
 render("Conditional: !DEV!=true");
-// #v-endif
+/// #endif
 
-// #v-ifdef (!DEV=true||PROD=true)
+/// #if (!DEV=true||PROD=true)
 render("Conditional: !DEV=true||PROD=true");
 // #v-else
 render("Conditional: !DEV=true||PROD=true else");
-// #v-endif
+/// #endif
 
-// #v-ifdef (DEV!=true||PROD=true)
+/// #if (DEV!=true||PROD=true)
 render("Conditional: n DEV!=true||PROD=true");
-// #v-endif
+/// #endif
