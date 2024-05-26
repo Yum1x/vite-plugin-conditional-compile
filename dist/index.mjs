@@ -92,6 +92,14 @@ const VitePluginConditionalCompile = (userOptions = {}) => {
     enforce: "pre",
     configResolved(config) {
       ctx.env = { ...ctx.env, ...config.env };
+      for (const key in ctx.env) {
+        const value = ctx.env[key];
+        if (typeof value !== "string")
+          continue;
+        if (!["true", "false"].includes(value))
+          continue;
+        ctx.env[key] = value === "true";
+      }
     },
     transform(code, id) {
       if (ctx.filter(id)) {
