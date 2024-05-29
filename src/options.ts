@@ -13,11 +13,11 @@ interface VIfStatement extends SimpleNode {
     alternate: SimpleNode[];
     kind: VIfToken["type"];
 }
-
+const patternSimple = new RegExp(/#v-(if|else|elif|endif)\s?(.*)/);
 const vIfDirective = defineDirective<VIfToken, VIfStatement>((context) => {
     return {
         lex(comment: any) {
-            return simpleMatchToken(comment ?? "", /#v-(if|else|elif|endif)\s?(.*)/);
+            return simpleMatchToken(comment ?? "", patternSimple);
         },
         parse(token: { type: string; value: any; }) {
             if (token.type === "if" || token.type === "elif" || token.type === "else") {

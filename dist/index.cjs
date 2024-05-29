@@ -7,10 +7,11 @@ function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'defau
 
 const remapping__default = /*#__PURE__*/_interopDefaultCompat(remapping);
 
+const patternSimple = new RegExp(/#v-(if|else|elif|endif)\s?(.*)/);
 const vIfDirective = unpluginPreprocessorDirectives.defineDirective((context) => {
   return {
     lex(comment) {
-      return unpluginPreprocessorDirectives.simpleMatchToken(comment ?? "", /#v-(if|else|elif|endif)\s?(.*)/);
+      return unpluginPreprocessorDirectives.simpleMatchToken(comment ?? "", patternSimple);
     },
     parse(token) {
       if (token.type === "if" || token.type === "elif" || token.type === "else") {

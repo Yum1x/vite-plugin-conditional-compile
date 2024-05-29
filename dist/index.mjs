@@ -1,10 +1,11 @@
 import remapping from '@ampproject/remapping';
 import { defineDirective, simpleMatchToken, resolveConditional, Context } from 'unplugin-preprocessor-directives';
 
+const patternSimple = new RegExp(/#v-(if|else|elif|endif)\s?(.*)/);
 const vIfDirective = defineDirective((context) => {
   return {
     lex(comment) {
-      return simpleMatchToken(comment ?? "", /#v-(if|else|elif|endif)\s?(.*)/);
+      return simpleMatchToken(comment ?? "", patternSimple);
     },
     parse(token) {
       if (token.type === "if" || token.type === "elif" || token.type === "else") {
