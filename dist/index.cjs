@@ -91,8 +91,8 @@ function createContext(options = {}) {
   return new unpluginPreprocessorDirectives.Context(resolveOptions(options));
 }
 
-const regexp = /\/\/\/\s*#(if|else|elif|endif)\s?(.*)/gm;
-const pattern = new RegExp(regexp.source);
+const regexp = /\/\/\/\s*#(if|else|elif|endif)\s?(.*)/;
+const pattern = new RegExp(regexp.source, "gm");
 const VitePluginConditionalCompile = (userOptions = {}) => {
   const ctx = createContext(userOptions);
   return {

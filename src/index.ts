@@ -2,8 +2,9 @@ import remapping from "@ampproject/remapping";
 import type { Plugin } from "vite";
 import { createContext } from "./context";
 import { UserOptions } from "./types";
-const regexp = /\/\/\/\s*#(if|else|elif|endif)\s?(.*)/gm;
-const pattern = new RegExp(regexp.source);
+
+const regexp = /\/\/\/\s*#(if|else|elif|endif)\s?(.*)/;
+const pattern = new RegExp(regexp.source, "gm");
 const VitePluginConditionalCompile = (userOptions: UserOptions = {}): Plugin => {
     const ctx = createContext(userOptions);
     return {
@@ -14,7 +15,7 @@ const VitePluginConditionalCompile = (userOptions: UserOptions = {}): Plugin => 
             for (const key in ctx.env) {
                 const value = ctx.env[key];
                 if (typeof value !== "string") continue;
-                if (!["true","false"].includes(value)) continue;
+                if (!["true", "false"].includes(value)) continue;
                 ctx.env[key] = value === "true";
             }
         },
