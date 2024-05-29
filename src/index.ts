@@ -2,7 +2,8 @@ import remapping from "@ampproject/remapping";
 import type { Plugin } from "vite";
 import { createContext } from "./context";
 import { UserOptions } from "./types";
-
+const regexp = /\/\/\/\s*#(if|else|elif|endif)\s?(.*)/gm;
+const pattern = new RegExp(regexp.source);
 const VitePluginConditionalCompile = (userOptions: UserOptions = {}): Plugin => {
     const ctx = createContext(userOptions);
     return {
@@ -19,7 +20,7 @@ const VitePluginConditionalCompile = (userOptions: UserOptions = {}): Plugin => 
         },
         transform(code, id) {
             if (ctx.filter(id)) {
-                code = code.replace(/\/\/\/\s*#(if|else|elif|endif)\s?(.*)/gm, (_, token, expression) => `// #v-${token} ${expression}`);
+                code = code.replace(pattern, (_, token, expression) => `// #v-${token} ${expression}`);
                 const transformed = ctx.transformWithMap(code, id);
                 if (transformed) {
                     const map = remapping([this.getCombinedSourcemap() as any, transformed.map], () => null) as any;
